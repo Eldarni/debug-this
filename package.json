@@ -1,0 +1,81 @@
+{
+    "name": "debug-this",
+    "displayName": "Debug This!",
+    "description": "A simple text-replacement to create console.log or other language appropiate debugging calls.",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "debug-this.createDebugReplacement",
+                "title": "Debug This!"
+            }
+        ],
+        "configuration": {
+            "title": "Debug This!",
+            "properties": {
+                "debug-this.options": {
+                    "type": "array",
+                    "default": [
+                        {
+                            "language": [
+                                "javascript"
+                            ],
+                            "single": "console.log('[[{0}]]', [[{1}]]);",
+                            "multi": "console.log({[[#variables]]\n\t'[[{0}]]' : [[{1}]],[[/variables]]\n});",
+                            "delimiters": [
+                                "[[",
+                                "]]"
+                            ],
+                            "replace": [
+                                [
+                                    "'",
+                                    "\\'"
+                                ]
+                            ]
+                        },
+                        {
+                            "language": [
+                                "php"
+                            ],
+                            "single": "var_dump('{{{0}}}', {{{1}}});",
+                            "multi": "var_dump({{#variables}}\n\t['{{{0}}}' : {{{1}}}],{{/variables}}\n);",
+                            "replace": [
+                                [
+                                    "'",
+                                    "\\'"
+                                ]
+                            ]
+                        }
+                    ],
+                    "markdownDescription": "The replacement rules, see the `readme.md` for detailed instructions"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "node ./test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.0.1",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.75.0",
+        "@vscode/test-electron": "^2.2.2",
+        "eslint": "^8.33.0",
+        "glob": "^8.1.0",
+        "mocha": "^10.1.0",
+        "typescript": "^4.9.4"
+    },
+    "dependencies": {
+        "mustache": "^4.2.0"
+    }
+}

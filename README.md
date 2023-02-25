@@ -49,12 +49,3 @@ Out of the box the plugin supports JavaScript and PHP contexts, however you are 
     }
 ]
 ```
-
-## Change Log
-
-### 1.0.0 - 2023-02
- - Support for PHP context using `var_dump()`
-
-### 0.1.0 - 2023-02
-- Support for Javascript contexts unsing `console.log()`
-- Initial implementation
