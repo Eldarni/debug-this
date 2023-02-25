@@ -3,6 +3,7 @@
     "displayName": "Debug This!",
     "description": "A simple text-replacement to create console.log or other language appropiate debugging calls.",
     "version": "1.0.0",
+    "repository": "https://github.com/Eldarni/debug-this",
     "engines": {
         "vscode": "^1.75.0"
     },
